@@ -6,17 +6,17 @@ export default function TabBar() {
     return (
         <>
             <hr />
-            <Link to="/home/transactions" >
+            <Link to="/" >
                 <Button>
                     Transactions
                 </Button>
             </Link>
-            <Link to="/home/wallet" >
+            <Link to="/wallet" >
                 <Button>
                     Wallet
                 </Button>
             </Link>
-            <Link to="/home/account" >
+            <Link to="/account" >
                 <Button>
                     Account
                 </Button>
