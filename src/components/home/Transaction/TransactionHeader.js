@@ -5,8 +5,8 @@ import WalletIcon from "../../../assets/icons/wallet.svg";
 const { Text, Title } = Typography;
 
 const Balance = () => (
-    <Row gutter={16}>
-        <Col span={3} offset={2}>
+    <Row>
+        <Col span={4} offset={2}>
             <Image src={WalletIcon} width="52px" preview={false} />
         </Col>
         <Col span={18}>
@@ -20,7 +20,7 @@ const Balance = () => (
 const Report = () => (
     <Row>
         <Col span={24}>
-
+            asdasd
         </Col>
     </Row>
 )
@@ -31,15 +31,13 @@ const Report = () => (
 // _ Report
 export default function TransactionHeader() {
     return (
-        // <Space direction="vertical">
-        <Row span={24} style={{ paddingTop: "30px" }}>
+        <Row span={24} style={{ paddingTop: "8px" }}>
             <Col span={24}>
                 <Balance />
             </Col>
-            <Col>
+            <Col span={24}>
                 <Report />
             </Col>
         </Row>
-        // </Space>
     )
 }
