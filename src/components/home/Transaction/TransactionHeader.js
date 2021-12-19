@@ -1,4 +1,5 @@
-import { Col, Image, Row, Space, Typography } from "antd";
+import { Card, Col, Divider, Image, Row, Space, Typography } from "antd";
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 import WalletIcon from "../../../assets/icons/wallet.svg";
 
@@ -9,7 +10,7 @@ const Balance = () => (
         <Col span={4} offset={2}>
             <Image src={WalletIcon} width="52px" preview={false} />
         </Col>
-        <Col span={18}>
+        <Col span={17} offset={1}>
             <Text>Total Balance</Text>
             <br />
             <Title level={3}>Rp 2,500,000</Title>
@@ -18,9 +19,78 @@ const Balance = () => (
 )
 
 const Report = () => (
-    <Row>
+    <Row gutter={[0,8]}>
         <Col span={24}>
-            asdasd
+            <Row>
+                <Col span={7}>
+                    <Row justify="end">
+                        <Col>
+                            <LeftOutlined />
+                        </Col>
+                    </Row>
+                </Col>
+                <Col span={10}>
+                    <Row justify="center">
+                        <Col>
+                            <Text>This Month</Text>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col span={7}>
+                    <Row justify="start">
+                        <Col>
+                            <RightOutlined />
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </Col>
+        <Col span={24}>
+            <Row>
+                <Col offset={3}>
+                    <Title level={5}>April 2021</Title>
+                </Col>
+                <Col span={24}>
+                    <Row>
+                        <Col span={8} offset={3}>
+                            <Text>Income</Text>
+                        </Col>
+                        <Col span={9}>
+                            <Row justify="end">
+                                <Col>
+                                    <Text>1,689,000</Text>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col span={24}>
+                    <Row>
+                        <Col span={8} offset={3}>
+                            <Text>Outcome</Text>
+                        </Col>
+                        <Col span={9}>
+                            <Row justify="end">
+                                <Col>
+                                    <Text>340,500</Text>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col span={24}>
+                    <Row>
+                        <Col span={8} offset={3} />
+                        <Col span={9}>
+                            <Row justify="end">
+                                <Col>
+                                    <Text>1,287,500</Text>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
         </Col>
     </Row>
 )
@@ -29,14 +99,20 @@ const Report = () => (
 // TrasactionHeader
 // _ Balance
 // _ Report
+// __ MonthNavigation
+// __ DetailReport
 export default function TransactionHeader() {
     return (
-        <Row span={24} style={{ paddingTop: "8px" }}>
+        <Row span={24} gutter={[0,16]} >
             <Col span={24}>
-                <Balance />
+                <Card bodyStyle={{padding: "8px 0px"}}>
+                    <Balance />
+                </Card>
             </Col>
             <Col span={24}>
-                <Report />
+                <Card bodyStyle={{padding: "8px 0px"}}>
+                    <Report />
+                </Card>
             </Col>
         </Row>
     )

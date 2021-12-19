@@ -1,9 +1,12 @@
+body{
+  background-color: #FCFCFC !important;
+
+}
 .app,
 .mp-routing {
-  height: 100vh;
+  /* height: 100vh;
   display: flex;
-  flex-direction: column;
-  background: #ffffff;
+  flex-direction: column; */
 }
 
 .top,
@@ -30,6 +33,7 @@
   position: fixed;
   bottom: 0px;
   width: 100%;
+  /* background-color: white; */
   /* right: 40px; */
   /* -webkit-box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
   /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */

@@ -3,13 +3,12 @@ import {
     useLocation,
 } from "react-router-dom";
 import {
-    AppOutline,
-    MessageFill,
     UnorderedListOutline,
     FolderOutline,
     UserOutline
 } from 'antd-mobile-icons'
 import { TabBar as TabBarAntdm } from 'antd-mobile'
+import { Card } from "antd";
 
 
 const tabs = [
@@ -41,10 +40,12 @@ export default function TabBar() {
     }
 
     return (
-        <TabBarAntdm activeKey={pathname} onChange={value => setRouteActive(value)}>
-            {tabs.map(item => (
-                <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
-            ))}
-        </TabBarAntdm>
+        <Card bodyStyle={{padding: "0"}}>
+            <TabBarAntdm activeKey={pathname} onChange={value => setRouteActive(value)}>
+                {tabs.map(item => (
+                    <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
+                ))}
+            </TabBarAntdm>
+        </Card>
     )
 }

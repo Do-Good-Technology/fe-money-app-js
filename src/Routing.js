@@ -17,13 +17,16 @@ export default function Routing() {
     return (
         <Suspense fallback={<div>Loading... </div>}>
             <Router>
-                <Routes>
-                    <Route path="/" element={<Transaction />} />
-                    <Route path="/wallet" element={<Wallet />} />
-                    <Route path="/account" element={<Account />} />
-                </Routes>
-                <div className='affix-button-submit'>
-                    <TabBar />
+                <div className='app mp-routing'>
+
+                    <Routes>
+                        <Route path="/" element={<Transaction />} />
+                        <Route path="/wallet" element={<Wallet />} />
+                        <Route path="/account" element={<Account />} />
+                    </Routes>
+                    <div className='affix-button-submit'>
+                        <TabBar />
+                    </div>
                 </div>
             </Router >
         </Suspense >
