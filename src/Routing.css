@@ -28,11 +28,12 @@
 
 .affix-button-submit {
   position: fixed;
-  bottom: 20px;
-  right: 40px;
-  -webkit-box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%);
-  background: transparent !important;
-  margin-left: 10px;
-  border-radius: 0.28571429rem;
+  bottom: 0px;
+  width: 100%;
+  /* right: 40px; */
+  /* -webkit-box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
+  /* box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%); */
+  /* background: transparent !important; */
+  /* margin-left: 10px; */
+  /* border-radius: 0.28571429rem; */
 }
