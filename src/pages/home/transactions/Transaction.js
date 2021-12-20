@@ -1,4 +1,9 @@
+import {
+    Row, Col
+} from "antd"
+
 import TransactionHeader from "../../../components/home/Transaction/TransactionHeader"
+import TransactionList from "../../../components/home/Transaction/TransactionList"
 
 // ? todo
 // TrasactionHeader
@@ -14,9 +19,13 @@ import TransactionHeader from "../../../components/home/Transaction/TransactionH
 
 export default function Transaction() {
     return (
-        <>
-            <TransactionHeader />
-            {/* you are in transaction */}
-        </>
+        <Row gutter={[0,16]}>
+            <Col span={24}>
+                <TransactionHeader />
+            </Col>
+            <Col span={24}>
+                <TransactionList />
+            </Col>
+        </Row>
     )
 }

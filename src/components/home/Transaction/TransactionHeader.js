@@ -103,7 +103,7 @@ const Report = () => (
 // __ DetailReport
 export default function TransactionHeader() {
     return (
-        <Row span={24} gutter={[0,16]} >
+        <Row span={24} gutter={[0,8]} >
             <Col span={24}>
                 <Card bodyStyle={{padding: "8px 0px"}}>
                     <Balance />
