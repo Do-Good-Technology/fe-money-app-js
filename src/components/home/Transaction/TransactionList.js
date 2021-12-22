@@ -1,4 +1,4 @@
-import { Card, Col, Divider, Image, Row, Typography } from "antd";
+import { Card, Col, Divider, Image, Row, Space, Typography } from "antd";
 
 import CharityIcon from '../../../assets/icons/category/charity.svg'
 
@@ -7,14 +7,14 @@ const { Text, Title } = Typography;
 const SummaryCard = () => (
     <Col span={24}>
         <Row>
-            <Col span={6}>
+            <Col span={4}>
                 <Row justify="end">
                     <Col>
-                        <Title level={2}>28</Title>
+                        <Title level={2} style={{ color: "var(--neutral-80)" }}>28</Title>
                     </Col>
                 </Row>
             </Col>
-            <Col span={8} offset={1}>
+            <Col span={12} offset={1}>
                 <Row>
                     <Col span={24}>
                         <Text strong>Sunday</Text>
@@ -24,10 +24,10 @@ const SummaryCard = () => (
                     </Col>
                 </Row>
             </Col>
-            <Col span={5}>
+            <Col span={6}>
                 <Row justify="end">
                     <Col>
-                        <Title level={5}>132,000</Title>
+                        <Title level={5} style={{ color: "var(--red-default)" }}>- 132,000</Title>
                     </Col>
                 </Row>
             </Col>
@@ -39,25 +39,25 @@ const SummaryCard = () => (
 const DetailItem = () => (
     <Col span={24}>
         <Row>
-            <Col span={6}>
+            <Col span={4}>
                 <Row justify="end">
                     <Image alt="" width="40px" src={CharityIcon} preview={false} />
                 </Row>
             </Col>
-            <Col span={8} offset={1}>
+            <Col span={12} offset={1}>
                 <Row>
                     <Col span={24}>
                         <Text>Donation</Text>
                     </Col>
                     <Col>
-                        <Text type="secondary">via Kitabisa</Text>
+                        <Text type="secondary">Gopay | Sedekah hari jumat via Kitabisa</Text>
                     </Col>
                 </Row>
             </Col>
-            <Col span={5}>
+            <Col span={6}>
                 <Row justify="end">
                     <Col>
-                        <Text strong>5,000</Text>
+                        <Text strong style={{ color: "var(--red-default)" }}>- 5,000</Text>
                     </Col>
                 </Row>
             </Col>

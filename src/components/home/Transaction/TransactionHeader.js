@@ -19,7 +19,7 @@ const Balance = () => (
 )
 
 const Report = () => (
-    <Row gutter={[0,8]}>
+    <Row gutter={[0, 8]} className="report">
         <Col span={24}>
             <Row>
                 <Col span={7}>
@@ -47,18 +47,18 @@ const Report = () => (
         </Col>
         <Col span={24}>
             <Row>
-                <Col offset={3}>
+                <Col offset={1}>
                     <Title level={5}>April 2021</Title>
                 </Col>
                 <Col span={24}>
                     <Row>
-                        <Col span={8} offset={3}>
+                        <Col span={8} offset={1}>
                             <Text>Income</Text>
                         </Col>
-                        <Col span={9}>
+                        <Col span={14}>
                             <Row justify="end">
                                 <Col>
-                                    <Text>1,689,000</Text>
+                                    <Text style={{ color: "var(--green-default)" }}>+ 1,689,000</Text>
                                 </Col>
                             </Row>
                         </Col>
@@ -66,13 +66,13 @@ const Report = () => (
                 </Col>
                 <Col span={24}>
                     <Row>
-                        <Col span={8} offset={3}>
+                        <Col span={8} offset={1}>
                             <Text>Outcome</Text>
                         </Col>
-                        <Col span={9}>
+                        <Col span={14}>
                             <Row justify="end">
                                 <Col>
-                                    <Text>340,500</Text>
+                                    <Text style={{ color: "var(--red-default)" }}>- 340,500</Text>
                                 </Col>
                             </Row>
                         </Col>
@@ -80,11 +80,11 @@ const Report = () => (
                 </Col>
                 <Col span={24}>
                     <Row>
-                        <Col span={8} offset={3} />
-                        <Col span={9}>
+                        <Col span={8} offset={1} />
+                        <Col span={14}>
                             <Row justify="end">
                                 <Col>
-                                    <Text>1,287,500</Text>
+                                    <Text strong>+ 1,287,500</Text>
                                 </Col>
                             </Row>
                         </Col>
@@ -103,14 +103,14 @@ const Report = () => (
 // __ DetailReport
 export default function TransactionHeader() {
     return (
-        <Row span={24} gutter={[0,8]} >
+        <Row span={24} gutter={[0, 8]} >
             <Col span={24}>
-                <Card bodyStyle={{padding: "8px 0px"}}>
+                <Card bodyStyle={{ padding: "8px 0px" }}>
                     <Balance />
                 </Card>
             </Col>
             <Col span={24}>
-                <Card bodyStyle={{padding: "8px 0px"}}>
+                <Card bodyStyle={{ padding: "8px 0px" }}>
                     <Report />
                 </Card>
             </Col>

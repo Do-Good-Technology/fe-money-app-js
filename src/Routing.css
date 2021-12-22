@@ -1,6 +1,35 @@
-body{
-  background-color: #FCFCFC !important;
+:root {
+  --red-default: #cb3a31;
+  --red-pressed: #3d0e0a;
+  --red-disabled: #f3bdb9;
 
+  --blue-default: #386ade;
+  --blue-pressed: #09225d;
+  --blue-disabled: #d1ddfa;
+
+  --yellow-default: #cdaa2e;
+  --yellow-pressed: #6a5711;
+  --yellow-disabled: #f4e7b8;
+
+  --green-default: #3fab64;
+  --green-pressed: #124022;
+  --green-disabled: #b3eac6;
+
+  --neutral-100: #363636;
+  --neutral-90: #626262;
+  --neutral-80: #7d7d7d;
+  --neutral-70: #8e8e8e;
+  --neutral-60: #afafaf;
+  --neutral-50: #cdcdcd;
+  --neutral-40: #e6e6e6;
+  --neutral-30: #f0f0f0;
+  --neutral-20: #f7f7f7;
+  --neutral-10: #fcfcfc;
+  --neutral-0: #ffffff;
+}
+
+body {
+  background-color: var(--neutral-10) !important;
 }
 .app,
 .mp-routing {
