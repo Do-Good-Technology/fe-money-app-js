@@ -19,7 +19,7 @@ const Balance = () => (
 )
 
 const Report = () => (
-    <Row gutter={[0, 8]} className="report">
+    <Row gutter={[0, 8]}>
         <Col span={24}>
             <Row>
                 <Col span={7}>
