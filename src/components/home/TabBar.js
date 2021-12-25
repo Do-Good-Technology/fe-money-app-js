@@ -9,6 +9,7 @@ import {
 } from 'antd-mobile-icons'
 import { TabBar as TabBarAntdm } from 'antd-mobile'
 import { Card } from "antd";
+import { useEffect, useState } from "react";
 
 
 const tabs = [
@@ -31,6 +32,7 @@ const tabs = [
 ]
 
 export default function TabBar() {
+    const [isHome, setIsHome] = useState(true);
     const navigate = useNavigate()
     const location = useLocation()
     const { pathname } = location
@@ -39,13 +41,27 @@ export default function TabBar() {
         navigate(value)
     }
 
-    return (
-        <Card bodyStyle={{padding: "0"}}>
-            <TabBarAntdm activeKey={pathname} onChange={value => setRouteActive(value)}>
-                {tabs.map(item => (
-                    <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
-                ))}
-            </TabBarAntdm>
-        </Card>
-    )
+    useEffect(() => {
+        if (pathname === '/' || pathname === '/wallet' || pathname === '/account') {
+            setIsHome(true)
+        } else {
+            setIsHome(false)
+        }
+    }, [pathname])
+
+    if (isHome) {
+        return (
+            <Card bodyStyle={{ padding: "0" }}>
+                <TabBarAntdm activeKey={pathname} onChange={value => setRouteActive(value)}>
+                    {tabs.map(item => (
+                        <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
+                    ))}
+                </TabBarAntdm>
+            </Card>
+        )
+    } else {
+        return (
+            <>you in other demension</>
+        )
+    }
 }

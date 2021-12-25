@@ -13,16 +13,19 @@ const Transaction = lazy(() => import('./pages/home/transactions/Index'));
 const Wallet = lazy(() => import('./pages/home/wallet/Index'));
 const Account = lazy(() => import('./pages/home/account/Index'));
 
+const Register = lazy(() => import('./pages/auth/register/Index'));
+
 export default function Routing() {
     return (
         <Suspense fallback={<div>Loading... </div>}>
             <Router>
                 <div className='app mp-routing'>
-
                     <Routes>
                         <Route path="/" element={<Transaction />} />
                         <Route path="/wallet" element={<Wallet />} />
                         <Route path="/account" element={<Account />} />
+
+                        <Route path="/register" element={<Register />} />
                     </Routes>
                     <div className='affix-button-submit'>
                         <TabBar />
