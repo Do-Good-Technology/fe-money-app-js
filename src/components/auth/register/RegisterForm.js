@@ -1,10 +1,24 @@
 import { Button, Checkbox, Col, Form, Input, Row, Typography } from "antd";
+import md5 from "md5";
 
 const { Text, Link: AntdLink } = Typography
 
-const onFinish = (values) => {
-    console.log('Success:', values);
-};
+const onClickFinish = ({ form }) => {
+    console.log('getFieldsValue', form.getFieldsValue());
+
+    let formValues = form.getFieldsValue();
+    const newPassword = md5(form.getFieldValue('password'))
+
+    console.log('formValues', formValues);
+
+    formValues = {
+        ...formValues,
+        confirm: '',
+        password: newPassword
+    }
+
+    console.log('new formValues', formValues);
+}
 
 const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
@@ -19,7 +33,7 @@ const onFinishFailed = (errorInfo) => {
 // _ I agree with the Terms and Conditions
 // _ Sign Up button
 export default function RegisterForm() {
-    const [form] = Form.useForm();
+    const [form] = Form.useForm()
 
     return (
         <Row justify="center">
@@ -27,7 +41,8 @@ export default function RegisterForm() {
                 <Form
                     name="register"
                     form={form}
-                    onFinish={onFinish}
+                    // onFinish={onFinish}
+                    onFinish={() => onClickFinish({ form })}
                     onFinishFailed={onFinishFailed}
                 >
                     <Form.Item
