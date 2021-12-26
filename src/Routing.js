@@ -14,6 +14,7 @@ const Wallet = lazy(() => import('./pages/home/wallet/Index'));
 const Account = lazy(() => import('./pages/home/account/Index'));
 
 const Register = lazy(() => import('./pages/auth/register/Index'));
+const Login = lazy(() => import('./pages/auth/login/Index'))
 
 export default function Routing() {
     return (
@@ -26,6 +27,7 @@ export default function Routing() {
                         <Route path="/account" element={<Account />} />
 
                         <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
                     </Routes>
                     <div className='affix-button-submit'>
                         <TabBar />
