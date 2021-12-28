@@ -1,18 +1,71 @@
-import { Button, Col, Form, Input, Row, Typography } from "antd";
-import { Link } from "react-router-dom";
+import { Button, Col, Form, Input, Row, Typography, message } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import qs from 'qs';
+import axios from "axios";
+import md5 from "md5";
 
 const { Text, Link: AntdLink } = Typography
 
-const onFinish = (values) => {
-    console.log('Success:', values);
-};
+
+const UrlApi = 'http://localhost:8080/';
+
+const onFetch = async (keyValue) => {
+    
+
+    return false;
+}
 
 const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
 };
 
 export default function LoginForm() {
+    const navigate = useNavigate()
     const [form] = Form.useForm();
+
+    const onFinish = async (values) => {
+        console.log('Success:', values);
+
+        const keyValue = {
+            email_user: values.email,
+            password_user: md5(values.password)
+        }
+
+        try {
+            const { data } = await axios.post(
+                `${UrlApi}auth/login`,
+                qs.stringify(keyValue)
+            )
+            console.log('keyValue', keyValue);
+            console.log('data', data);
+            if (data.status === 'success') {
+                console.log('auth', data?.auth);
+                localStorage.setItem('auth', JSON.stringify(data?.auth))
+
+                message.success({
+                    content: 'welcome',
+                    duration: 2
+                })
+                navigate('/');
+            } else {
+                console.log('status', data?.status);
+                if (data?.info === 'email is not registered') {
+                    message.warn({
+                        content: 'email is not registered',
+                        duration: 2
+                    })
+                }
+                if (data?.info === 'email is correct, password is incorrect') {
+                    message.warn({
+                        content: 'email is correct, password is incorrect',
+                        duration: 2
+                    })
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <Form
