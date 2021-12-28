@@ -1,21 +1,15 @@
-import { Button, Col, Form, Input, Row, Typography, message } from "antd";
-import { Link, useNavigate } from "react-router-dom";
-import qs from 'qs';
-import axios from "axios";
+import { Button, Col, Form, Input, message, Row, Typography } from "antd";
 import md5 from "md5";
+import { Link, useNavigate } from "react-router-dom";
+import { onFetch } from "../../../helpers/onFetch";
 
 const { Text, Link: AntdLink } = Typography
 
-
-const UrlApi = 'http://localhost:8080/';
-
-const onFetch = async (keyValue) => {
-    
-
-    return false;
-}
-
 const onFinishFailed = (errorInfo) => {
+    message.error({
+        content: 'check your form',
+        duration: 2
+    })
     console.log('Failed:', errorInfo);
 };
 
@@ -30,40 +24,34 @@ export default function LoginForm() {
             email_user: values.email,
             password_user: md5(values.password)
         }
+        const link = 'auth/login'
 
-        try {
-            const { data } = await axios.post(
-                `${UrlApi}auth/login`,
-                qs.stringify(keyValue)
-            )
-            console.log('keyValue', keyValue);
-            console.log('data', data);
-            if (data.status === 'success') {
-                console.log('auth', data?.auth);
-                localStorage.setItem('auth', JSON.stringify(data?.auth))
+        const data = await onFetch(keyValue, link);
 
-                message.success({
-                    content: 'welcome',
+        if (data.status === 'success') {
+            console.log('auth', data?.auth);
+            localStorage.setItem('auth', JSON.stringify(data?.auth))
+
+            message.success({
+                content: 'welcome',
+                duration: 2
+            })
+            navigate('/');
+        }
+        if (data.status === 'failed') {
+            console.log('status', data?.status);
+            if (data?.info === 'email is not registered') {
+                message.warn({
+                    content: 'email is not registered',
                     duration: 2
                 })
-                navigate('/');
-            } else {
-                console.log('status', data?.status);
-                if (data?.info === 'email is not registered') {
-                    message.warn({
-                        content: 'email is not registered',
-                        duration: 2
-                    })
-                }
-                if (data?.info === 'email is correct, password is incorrect') {
-                    message.warn({
-                        content: 'email is correct, password is incorrect',
-                        duration: 2
-                    })
-                }
             }
-        } catch (error) {
-            console.log(error);
+            if (data?.info === 'email is correct, password is incorrect') {
+                message.warn({
+                    content: 'email is correct, password is incorrect',
+                    duration: 2
+                })
+            }
         }
     };
 
@@ -119,7 +107,6 @@ export default function LoginForm() {
                     <Row justify="center">
                         <Col span={20}>
                             <Form.Item
-                            // {...tailFormItemLayout}
                             >
                                 <Button style={{ width: "100%" }} type="primary" htmlType="submit">
                                     Log In
