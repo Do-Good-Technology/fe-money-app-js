@@ -1,9 +1,7 @@
-import {
-    Row, Col
-} from "antd"
+import { Row, Col } from "antd";
 
-import TransactionHeader from "../../../components/home/Transaction/TransactionHeader"
-import TransactionList from "../../../components/home/Transaction/TransactionList"
+import TransactionHeader from "../../../components/home/Transaction/TransactionHeader";
+import TransactionList from "../../../components/home/Transaction/TransactionList";
 
 // ? todo
 // TrasactionHeader
@@ -19,14 +17,14 @@ import TransactionList from "../../../components/home/Transaction/TransactionLis
 // SelectMonthModal
 
 export default function Transaction() {
-    return (
-        <Row gutter={[0,16]}>
-            <Col span={24}>
-                <TransactionHeader />
-            </Col>
-            <Col span={24}>
-                <TransactionList />
-            </Col>
-        </Row>
-    )
+  return (
+    <Row gutter={[0, 16]}>
+      <Col span={24}>
+        <TransactionHeader />
+      </Col>
+      <Col span={24}>
+        <TransactionList />
+      </Col>
+    </Row>
+  );
 }

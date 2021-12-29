@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 export const initialState = {
-    isHome: false
-}
+  isHome: false
+};
 
 const GlobalContext = createContext(initialState);
 
