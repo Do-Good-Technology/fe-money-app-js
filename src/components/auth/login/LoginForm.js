@@ -10,7 +10,6 @@ const onFinishFailed = (errorInfo) => {
     content: "check your form",
     duration: 2
   });
-  console.log("Failed:", errorInfo);
 };
 
 export default function LoginForm() {
@@ -18,7 +17,6 @@ export default function LoginForm() {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
-    console.log("Success:", values);
 
     const keyValue = {
       email_user: values.email,
@@ -29,7 +27,6 @@ export default function LoginForm() {
     const data = await onFetch(keyValue, link);
 
     if (data.status === "success") {
-      console.log("auth", data?.auth);
       localStorage.setItem("auth", JSON.stringify(data?.auth));
 
       message.success({
@@ -39,7 +36,6 @@ export default function LoginForm() {
       navigate("/");
     }
     if (data.status === "failed") {
-      console.log("status", data?.status);
       if (data?.info === "email is not registered") {
         message.warn({
           content: "email is not registered",

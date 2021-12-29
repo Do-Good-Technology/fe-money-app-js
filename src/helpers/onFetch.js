@@ -10,8 +10,6 @@ export const onFetch = async (keyValue, link) => {
       `${UrlApi}${link}`,
       qs.stringify(keyValue)
     );
-    console.log("keyValue", keyValue);
-    console.log("data", data);
     return data;
   } catch (error) {
     message.error({
