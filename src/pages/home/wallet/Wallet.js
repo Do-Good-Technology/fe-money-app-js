@@ -1,7 +1,10 @@
-import { Card, Col, Row, Typography } from "antd";
+import { Affix, Button, Card, Col, Row, Typography } from "antd";
+import { Fragment } from "react";
+import { PlusOutlined } from "@ant-design/icons";
 
 import WalletBackground from "../../../assets/background/wallet.svg";
 import ListWallet from "../../../components/home/Wallet/ListWallet";
+import { Link } from "react-router-dom";
 
 const { Text, Title } = Typography;
 
@@ -29,6 +32,20 @@ const WalletHeader = () =>
     </Row>
   </Card>;
 
+const WalletFloatButton = () =>
+  <Affix style={{ position: "absolute", bottom: "80px", right: "16px" }}>
+    <Link to="/add-new-wallet">
+      <Button
+        type="primary"
+        shape="round"
+        icon={<PlusOutlined />}
+        size="middle"
+      >
+        Add Wallet
+      </Button>
+    </Link>
+  </Affix>;
+
 // ? todo
 // Wallet pages
 // _ O WalletHeader
@@ -38,13 +55,16 @@ const WalletHeader = () =>
 // _ WalletFloatButton
 export default function Wallet() {
   return (
-    <Row gutter={[0, 16]}>
-      <Col span={24}>
-        <WalletHeader />
-      </Col>
-      <Col span={24}>
-        <ListWallet />
-      </Col>
-    </Row>
+    <Fragment>
+      <Row gutter={[0, 16]}>
+        <Col span={24}>
+          <WalletHeader />
+        </Col>
+        <Col span={24}>
+          <ListWallet />
+        </Col>
+      </Row>
+      <WalletFloatButton />
+    </Fragment>
   );
 }

@@ -8,7 +8,7 @@ const ItemWallet = () =>
   <Card bodyStyle={{ padding: "8px 8px" }}>
     <Row>
       <Col span={4} offset={1}>
-        <Image alt="" width="40px" src={WalletIcon} />
+        <Image alt="" width="40px" src={WalletIcon} preview={false} />
       </Col>
       <Col span={19}>
         <Text strong>Real Wallet</Text>
@@ -18,7 +18,7 @@ const ItemWallet = () =>
     </Row>
   </Card>;
 
-const CardWallet = () => {
+const CardWallets = () => {
   return <ItemWallet />;
 };
 
@@ -27,17 +27,17 @@ const CardWallet = () => {
 // _ O WalletHeader
 // _ C List Wallet
 // __ text "your wallet"
-// __ Card Wallet
+// __ Card Wallets
 // ___ Item Wallet
 // _ WalletFloatButton
 export default function ListWallet() {
   return (
-    <Row>
+    <Row gutter={[0, 16]}>
       <Col span={12} offset={1}>
         <Text strong>Your Wallet</Text>
       </Col>
       <Col span={22} offset={1}>
-        <CardWallet />
+        <CardWallets />
       </Col>
     </Row>
   );
