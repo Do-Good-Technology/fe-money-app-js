@@ -1,17 +1,10 @@
 import {
-  Row,
-  Col,
-  Typography,
-  Image,
-  Form,
+  Button, Checkbox, Col, Form,
   Input,
-  InputNumber,
-  Checkbox,
-  Button
+  InputNumber, Row, Typography
 } from "antd";
-import { Fragment } from "react";
+import IconForm from "./IconForm";
 
-import WalletIcon from "../../assets/icons/wallet.svg";
 
 const { Text } = Typography;
 
@@ -36,20 +29,6 @@ const ListForm = ({ formInstance }) =>
       </Button>
     </Form.Item>
   </Form>;
-
-const IconForm = () =>
-  <Fragment>
-    <Row justify="center">
-      <Col>
-        <Image alt="" src={WalletIcon} width="120px" preview={false} />
-      </Col>
-    </Row>
-    <Row justify="center" style={{ marginTop: "8px" }}>
-      <Col>
-        <Text type="secondary">Tap to Change Wallet Icon</Text>
-      </Col>
-    </Row>
-  </Fragment>;
 
 //? todo
 // AddNewWallet

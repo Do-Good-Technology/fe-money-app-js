@@ -5,6 +5,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import WalletBackground from "../../../assets/background/wallet.svg";
 import ListWallet from "../../../components/home/Wallet/ListWallet";
 import { Link } from "react-router-dom";
+import MaFloat from "../../../components/global/MaFloat";
 
 const { Text, Title } = Typography;
 
@@ -33,7 +34,7 @@ const WalletHeader = () =>
   </Card>;
 
 const WalletFloatButton = () =>
-  <Affix style={{ position: "absolute", bottom: "80px", right: "16px" }}>
+  <MaFloat>
     <Link to="/add-new-wallet">
       <Button
         type="primary"
@@ -44,7 +45,7 @@ const WalletFloatButton = () =>
         Add Wallet
       </Button>
     </Link>
-  </Affix>;
+  </MaFloat>;
 
 // ? todo
 // Wallet pages

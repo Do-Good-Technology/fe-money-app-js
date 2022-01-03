@@ -13,6 +13,8 @@ const Account = lazy(() => import("./pages/home/account/Index"));
 const AddNewWallet = lazy(() => import("./pages/AddNewWallet/AddNewWallet"));
 const AddTransaction = lazy(() => import("./pages/AddTransaction/Index"));
 
+const ChooseWalletIcon = lazy(() => import("./pages/ChooseWalletIcon/Index"));
+
 const Register = lazy(() => import("./pages/auth/register/Index"));
 const Login = lazy(() => import("./pages/auth/login/Index"));
 
@@ -28,6 +30,8 @@ export default function Routing() {
 
             <Route path="/add-new-wallet" element={<AddNewWallet />} />
             <Route path="/add-transaction" element={<AddTransaction />} />
+
+            <Route path="/choose-wallet-icon" element={<ChooseWalletIcon />} />
 
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />

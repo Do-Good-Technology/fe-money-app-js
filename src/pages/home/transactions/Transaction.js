@@ -5,10 +5,10 @@ import { PlusOutlined } from "@ant-design/icons";
 
 import TransactionHeader from "../../../components/home/Transaction/TransactionHeader";
 import TransactionList from "../../../components/home/Transaction/TransactionList";
-import MaFloatButton from "../../../components/global/MaFloatButton";
+import MaFloat from "../../../components/global/MaFloat";
 
 const TransactionFloatButton = () =>
-  <Affix style={{ position: "absolute", bottom: "80px", right: "16px" }}>
+  <MaFloat>
     <Link to="/add-transaction">
       <Button
         type="primary"
@@ -17,7 +17,7 @@ const TransactionFloatButton = () =>
         size="large"
       />
     </Link>
-  </Affix>;
+  </MaFloat>;
 
 // ? todo
 // TrasactionHeader
@@ -42,8 +42,7 @@ export default function Transaction() {
           <TransactionList />
         </Col>
       </Row>
-      {/* <TransactionFloatButton /> */}
-      <MaFloatButton link="/add-transaction" text="" />
+      <TransactionFloatButton />
     </Fragment>
   );
 }
