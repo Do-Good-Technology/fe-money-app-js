@@ -32,3 +32,30 @@ export function wallet(type) {
 
   return selectedType;
 }
+
+export const arrayWallet = [
+  {
+    id: "Blue",
+    icon: Blue
+  },
+  {
+    id: "Green",
+    icon: Green
+  },
+  {
+    id: "LigtBlue",
+    icon: LightBlue
+  },
+  {
+    id: "Neutral",
+    icon: Neutral
+  },
+  {
+    id: "Red",
+    icon: Red
+  },
+  {
+    id: "Yellow",
+    icon: Yellow
+  }
+];

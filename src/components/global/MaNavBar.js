@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const { Text } = Typography;
 
-export default function MaNavBar({ title }) {
+export default function MaNavBar({ title, goBackTo }) {
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(-1);
+    navigate(goBackTo);
   };
 
   return (

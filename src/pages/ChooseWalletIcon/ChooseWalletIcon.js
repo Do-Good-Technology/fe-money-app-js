@@ -1,15 +1,19 @@
+import { Col, Row } from "antd";
 import { Fragment } from "react";
-import MaNavBar from "../../components/global/MaNavBar";
-import IconWalletContextProvider from "../../components/ChooseWalletIcon/context/IconWalletContextProvider";
 import ListWalletIcon from "../../components/ChooseWalletIcon/ListWalletIcon";
+import MaNavBar from "../../components/global/MaNavBar";
 
 export default function ChooseWalletIcon() {
   return (
-    <IconWalletContextProvider>
-      <Fragment>
-        <MaNavBar title="Choose Wallet Icon" />
-        <ListWalletIcon />
-      </Fragment>
-    </IconWalletContextProvider>
+    <Fragment>
+      <Row gutter={[0, 16]}>
+        <Col span={24}>
+          <MaNavBar title="Choose Wallet Icon" goBackTo="/add-new-wallet" />
+        </Col>
+        <Col span={24}>
+          <ListWalletIcon />
+        </Col>
+      </Row>
+    </Fragment>
   );
 }

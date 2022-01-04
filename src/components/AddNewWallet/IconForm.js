@@ -1,7 +1,8 @@
 import { Col, Image, Row, Typography } from "antd";
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import { wallet } from "../ChooseWalletIcon/utilitiesWalletIcon";
+import IconWalletContext from "../../context/IconWalletContext";
 
 const { Text } = Typography;
 
@@ -10,7 +11,9 @@ const { Text } = Typography;
  * @param {String} type 
  * @returns {React.ReactNode} icon & text
  */
-export default function IconForm({ type = "Green" }) {
+export default function IconForm() {
+  const { type } = useContext(IconWalletContext);
+
   return (
     <Fragment>
       <Row justify="center">
