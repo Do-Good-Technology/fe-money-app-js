@@ -1,7 +1,3 @@
 export default function Coba() {
-    return (
-        <>
-            Coba Page
-        </>
-    )
+  return <>Coba Page</>;
 }
