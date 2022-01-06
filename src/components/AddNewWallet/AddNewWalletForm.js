@@ -5,34 +5,69 @@ import {
   Form,
   Input,
   InputNumber,
-  message,
+  Radio,
   Row,
   Typography
 } from "antd";
-import md5 from "md5";
-import { onFetch } from "../../helpers/onFetch";
-import IconForm from "./IconForm";
-import IconWalletContext from "../../context/IconWalletContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import IconWalletContext from "../../context/IconWalletContext";
+import IconForm from "./IconForm";
+import { onFetch } from "../../helpers/onFetch";
 
 const { Text } = Typography;
+
+const listWalletType = [
+  {
+    label: "Pysical Wallet",
+    value: "physical_wallet",
+    description: "E.g: Wallet in Your Pocket"
+  },
+  {
+    label: "Card Money",
+    value: "card_money",
+    description: "E.g: E-money, E-toll"
+  },
+  { label: "Bank", value: "bank", description: "E.g: BCA, Mandiri, BRI" },
+  {
+    label: "E-Wallet",
+    value: "e_wallet",
+    description: "E.g: Gopay, Ovo, Dana"
+  },
+  {
+    label: "Investment",
+    value: "investment",
+    description: "E.g: Reksadana, Stock"
+  },
+  { label: "Other", value: "other", description: "Other Wallet" }
+];
 
 const ListForm = () => {
   const navigate = useNavigate();
   const [formInstance] = Form.useForm();
-
   const { type } = useContext(IconWalletContext);
+  const [descriptionWalletType, setDescriptionWalletType] = useState("");
 
-  const onFinish = async values => {
-    console.log("values", values, "type", type);
+  const onChangeWalletType = (e) => {
+    let selected = "";
+    selected = listWalletType.filter((item) => item.value === e.target.value);
+    setDescriptionWalletType(selected[0].description);
+  };
+
+  const onFinish = async (values) => {
+    const auth = localStorage.getItem("auth");
+    console.log("auth", auth);
     const keyValue = {
+      auth: auth,
+      iconType: type,
       walletName: values.walletName,
-      currentBalance: values.currentBalance,
-      type: type
+      walletType: values.walletType,
+      currentBalance: values.currentBalance
     };
     console.log("key values", keyValue);
-    const link = "asd";
+
+    const link = "/add-new-wallet";
+    const data = await onFetch(keyValue, link);
   };
 
   return (
@@ -44,18 +79,51 @@ const ListForm = () => {
       >
         <Input placeholder="E.g.: Brown Wallet" />
       </Form.Item>
+
+      <Form.Item
+        label={`Wallet Type ${
+          descriptionWalletType && `( ${descriptionWalletType} )`
+        } `}
+        name="walletType"
+        rules={[{ required: true }]}
+      >
+        <Radio.Group
+          options={listWalletType}
+          optionType="button"
+          buttonStyle="solid"
+          onChange={onChangeWalletType}
+        />
+      </Form.Item>
+
       <Form.Item
         name="currentBalance"
         label="Current Balance"
-        rules={[{ required: true }]}
+        rules={[
+          { required: true },
+          {
+            required: true,
+            message: "A value must be entered",
+            pattern: new RegExp(/^[0-9]+$/)
+          }
+        ]}
       >
-        <InputNumber addonBefore="Rp" style={{ width: "100%" }} />
+        <InputNumber
+          addonBefore="Rp"
+          formatter={(value) =>
+            `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }
+          parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+          style={{ width: "100%" }}
+        />
       </Form.Item>
+
       <Form.Item name="condition">
         <Checkbox>
+          <Text strong>Exclude from Report</Text>
+          <br />
           <Text>
-            Add current balance as new income transaction to adjust total
-            balance
+            (Default: Off) Don't include this current balance in report such as
+            overview
           </Text>
         </Checkbox>
       </Form.Item>
@@ -77,8 +145,6 @@ const ListForm = () => {
 // __ CurrentBalanceForm
 // __ ConditionCheckBox
 export default function AddNewWalletForm() {
-  const [formInstance] = Form.useForm();
-
   return (
     <Row gutter={[0, 32]} style={{ paddingTop: "32px" }}>
       <Col span={24}>
