@@ -1,6 +1,8 @@
 import { Button, Col, Form, Input, message, Row, Typography } from "antd";
 import md5 from "md5";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import GlobalContext from "../../../context/GlobalContext";
 import { onFetch } from "../../../helpers/onFetch";
 
 const { Text, Link: AntdLink } = Typography;
@@ -15,16 +17,17 @@ const onFinishFailed = (errorInfo) => {
 export default function LoginForm() {
   const navigate = useNavigate();
   const [form] = Form.useForm();
+  const { isFetching, setIsFetching } = useContext(GlobalContext);
+  const fetch = { isFetching, setIsFetching };
 
   const onFinish = async (values) => {
-
     const keyValue = {
       email_user: values.email,
       password_user: md5(values.password)
     };
     const link = "auth/login";
 
-    const data = await onFetch(keyValue, link);
+    const data = await onFetch(keyValue, link, fetch);
 
     if (data.status === "success") {
       localStorage.setItem("auth", JSON.stringify(data?.auth));
