@@ -1,7 +1,7 @@
-import React, { lazy, Suspense } from "react";
-import { Skeleton } from "antd";
+import { Skeleton, Spin } from "antd";
+import React, { lazy, Suspense, useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import GlobalContext from "./context/GlobalContext";
 import "./Routing.css";
 
 const TabBar = lazy(() => import("./components/home/TabBar"));
@@ -19,27 +19,36 @@ const Register = lazy(() => import("./pages/auth/register/Index"));
 const Login = lazy(() => import("./pages/auth/login/Index"));
 
 export default function Routing() {
+  const { isFetching } = useContext(GlobalContext);
+
   return (
     <Suspense fallback={<Skeleton />}>
       <Router>
-        <div className="app mp-routing">
-          <Routes>
-            <Route path="/" element={<Transaction />} />
-            <Route path="/wallet" element={<Wallet />} />
-            <Route path="/account" element={<Account />} />
+        <Spin spinning={isFetching}>
+          <div style={{ height: "100vh" }}>
+            <div className="app mp-routing">
+              <Routes>
+                <Route path="/" element={<Transaction />} />
+                <Route path="/wallet" element={<Wallet />} />
+                <Route path="/account" element={<Account />} />
 
-            <Route path="/add-new-wallet" element={<AddNewWallet />} />
-            <Route path="/add-transaction" element={<AddTransaction />} />
+                <Route path="/add-new-wallet" element={<AddNewWallet />} />
+                <Route path="/add-transaction" element={<AddTransaction />} />
 
-            <Route path="/choose-wallet-icon" element={<ChooseWalletIcon />} />
+                <Route
+                  path="/choose-wallet-icon"
+                  element={<ChooseWalletIcon />}
+                />
 
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-          <div className="affix-button-submit">
-            <TabBar />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+              </Routes>
+              <div className="affix-button-submit">
+                <TabBar />
+              </div>
+            </div>
           </div>
-        </div>
+        </Spin>
       </Router>
     </Suspense>
   );

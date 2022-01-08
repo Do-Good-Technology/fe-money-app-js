@@ -5,15 +5,17 @@ import {
   Form,
   Input,
   InputNumber,
+  message,
   Radio,
   Row,
   Typography
 } from "antd";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GlobalContext from "../../context/GlobalContext";
 import IconWalletContext from "../../context/IconWalletContext";
-import IconForm from "./IconForm";
 import { onFetch } from "../../helpers/onFetch";
+import IconForm from "./IconForm";
 
 const { Text } = Typography;
 
@@ -46,6 +48,8 @@ const ListForm = () => {
   const navigate = useNavigate();
   const [formInstance] = Form.useForm();
   const { type } = useContext(IconWalletContext);
+  const { isFetching, setIsFetching } = useContext(GlobalContext);
+  const fetch = { isFetching, setIsFetching };
   const [descriptionWalletType, setDescriptionWalletType] = useState("");
 
   const onChangeWalletType = (e) => {
@@ -56,18 +60,33 @@ const ListForm = () => {
 
   const onFinish = async (values) => {
     const auth = localStorage.getItem("auth");
-    console.log("auth", auth);
+    console.log("values", values);
     const keyValue = {
       auth: auth,
       iconType: type,
       walletName: values.walletName,
       walletType: values.walletType,
-      currentBalance: values.currentBalance
+      currentBalance: values.currentBalance,
+      isReport: values.isReport ? 1 : 0
     };
     console.log("key values", keyValue);
 
     const link = "/add-new-wallet";
-    const data = await onFetch(keyValue, link);
+    const data = await onFetch(keyValue, link, fetch);
+
+    if (data?.status === "success") {
+      message.success({
+        content: "New Wallet Has Been Made",
+        duration: 2
+      });
+      navigate("/wallet");
+    }
+    if (data?.status === "failed") {
+      message.warning({
+        content: "Failed",
+        duration: 2
+      });
+    }
   };
 
   return (
@@ -99,7 +118,6 @@ const ListForm = () => {
         name="currentBalance"
         label="Current Balance"
         rules={[
-          { required: true },
           {
             required: true,
             message: "A value must be entered",
@@ -117,14 +135,16 @@ const ListForm = () => {
         />
       </Form.Item>
 
-      <Form.Item name="condition">
+      <Form.Item name="isReport" valuePropName="checked" initialValue={false}>
         <Checkbox>
-          <Text strong>Exclude from Report</Text>
-          <br />
-          <Text>
-            (Default: Off) Don't include this current balance in report such as
-            overview
-          </Text>
+          <>
+            <Text strong>Exclude from Report</Text>
+            <br />
+            <Text>
+              (Default: Off) Don't include this current balance in report such
+              as overview
+            </Text>
+          </>
         </Checkbox>
       </Form.Item>
       <Form.Item style={{ marginTop: "32px" }}>

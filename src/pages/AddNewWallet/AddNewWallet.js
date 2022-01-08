@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import AddNewWalletForm from "../../components/AddNewWallet/AddNewWalletForm";
-import IconWalletContextProvider from "../../context/IconWalletContextProvider";
 import MaNavBar from "../../components/global/MaNavBar";
 
 //? todo
