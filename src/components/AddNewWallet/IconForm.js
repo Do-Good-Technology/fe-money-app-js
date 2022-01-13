@@ -1,14 +1,14 @@
 import { Col, Image, Row, Typography } from "antd";
 import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
-import { wallet } from "../ChooseWalletIcon/utilitiesWalletIcon";
 import IconWalletContext from "../../context/IconWalletContext";
+import { wallet } from "../../helpers/utilitiesWalletIcon";
 
 const { Text } = Typography;
 
 /**
- * 
- * @param {String} type 
+ *
+ * @param {String} type
  * @returns {React.ReactNode} icon & text
  */
 export default function IconForm() {
