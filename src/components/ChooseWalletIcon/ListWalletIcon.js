@@ -1,16 +1,15 @@
 import { Col, Image, Row } from "antd";
-import { arrayWallet } from "./utilitiesWalletIcon";
 import { useContext } from "react";
-
-import IconWalletContext from "../../context/IconWalletContext";
 import { Link } from "react-router-dom";
+import IconWalletContext from "../../context/IconWalletContext";
+import { arrayWallet } from "../../helpers/utilitiesWalletIcon";
 
 //? todo
 // ListWalletIcon
 export default function ListWalletIcon() {
   const { type, setType } = useContext(IconWalletContext);
 
-  const listWalletIcon = arrayWallet.map(item =>
+  const listWalletIcon = arrayWallet.map((item) => (
     <Col
       key={item.id}
       span={12}
@@ -30,11 +29,7 @@ export default function ListWalletIcon() {
         </Col>
       </Row>
     </Col>
-  );
+  ));
 
-  return (
-    <Row gutter={[0, 8]}>
-      {listWalletIcon}
-    </Row>
-  );
+  return <Row gutter={[0, 8]}>{listWalletIcon}</Row>;
 }

@@ -1,9 +1,9 @@
-import Blue from "../../assets/icons/wallets/Blue.svg";
-import Green from "../../assets/icons/wallets/Green.svg";
-import LightBlue from "../../assets/icons/wallets/LightBlue.svg";
-import Neutral from "../../assets/icons/wallets/Neutral.svg";
-import Red from "../../assets/icons/wallets/Red.svg";
-import Yellow from "../../assets/icons/wallets/Yellow.svg";
+import Blue from "../assets/icons/wallets/Blue.svg";
+import Green from "../assets/icons/wallets/Green.svg";
+import LightBlue from "../assets/icons/wallets/LightBlue.svg";
+import Neutral from "../assets/icons/wallets/Neutral.svg";
+import Red from "../assets/icons/wallets/Red.svg";
+import Yellow from "../assets/icons/wallets/Yellow.svg";
 
 export function wallet(type) {
   let selectedType;
