@@ -4,7 +4,7 @@ export const initialState = {
   balanceTotal: 0,
   setBalanceTotal: null,
   walletListData: [{}],
-  setWalletListData: null
+  setWalletListData: null,
 };
 
 const WalletContext = createContext(initialState);

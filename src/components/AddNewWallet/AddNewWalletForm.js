@@ -60,7 +60,6 @@ const ListForm = () => {
 
   const onFinish = async (values) => {
     const auth = localStorage.getItem("auth");
-    console.log("values", values);
     const keyValue = {
       auth: auth,
       iconType: type,
@@ -69,7 +68,6 @@ const ListForm = () => {
       currentBalance: values.currentBalance,
       isReport: values.isReport ? 1 : 0
     };
-    console.log("key values", keyValue);
 
     const link = "/add-new-wallet";
     const data = await onFetch(keyValue, link, fetch);
