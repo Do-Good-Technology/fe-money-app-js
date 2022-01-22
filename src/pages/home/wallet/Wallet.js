@@ -70,7 +70,14 @@ export default function Wallet() {
             <WalletHeader />
           </Col>
           <Col span={24}>
-            <ListWallet />
+            <Row gutter={[0, 16]}>
+              <Col span={12} offset={1}>
+                <Text strong>Your Wallet</Text>
+              </Col>
+              <Col span={22} offset={1}>
+                <ListWallet />
+              </Col>
+            </Row>
           </Col>
         </Row>
         <WalletFloatButton />

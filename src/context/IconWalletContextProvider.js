@@ -4,14 +4,6 @@ import IconWalletContext, { InitialState } from "./IconWalletContext";
 
 export default function IconWalletContextProvider({ children }) {
   const [type, setType] = useState(InitialState.type);
-
-  useEffect(
-    () => {
-      console.log("type", type);
-    },
-    [type]
-  );
-
   return (
     <IconWalletContext.Provider
       value={{

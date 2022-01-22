@@ -25,8 +25,6 @@ export default function WalletContextProvider({ children }) {
 
     setBalanceTotal(data?.balanceTotal);
     setWalletListData(data?.walletListData);
-
-    console.log("data /wallet/show-wallet-page", data);
   };
 
   useEffect(() => {
@@ -34,7 +32,12 @@ export default function WalletContextProvider({ children }) {
   }, []);
 
   return (
-    <WalletContext.Provider value={{ balanceTotal, walletListData }}>
+    <WalletContext.Provider
+      value={{
+        balanceTotal,
+        walletListData
+      }}
+    >
       {children}
     </WalletContext.Provider>
   );
