@@ -10,7 +10,6 @@ export default function CheckAuth({ children }) {
     if (pathname === "/login" || pathname === "/register") {
     } else {
       const authData = JSON.parse(localStorage.getItem("auth"));
-      console.log("authData", authData);
 
       if (
         !authData?.email_user ||

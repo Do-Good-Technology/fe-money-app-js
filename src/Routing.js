@@ -16,6 +16,7 @@ const AddTransaction = lazy(() => import("./pages/AddTransaction/Index"));
 
 const ChooseWalletIcon = lazy(() => import("./pages/ChooseWalletIcon/Index"));
 const ChooseWallet = lazy(() => import("./pages/ChooseWallet/Index"));
+const ChooseCategory = lazy(() => import("./pages/ChooseCategory/Index"));
 
 const Register = lazy(() => import("./pages/auth/register/Index"));
 const Login = lazy(() => import("./pages/auth/login/Index"));
@@ -43,6 +44,7 @@ export default function Routing() {
                   element={<ChooseWalletIcon />}
                 />
                 <Route path="/choose-wallet" element={<ChooseWallet />} />
+                <Route path="/choose-category" element={<ChooseCategory />} />
 
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
