@@ -1,7 +1,8 @@
-import { Row, Col, Form, Input, InputNumber, DatePicker, Button } from "antd";
+import { Button, Col, DatePicker, Form, Input, InputNumber, Row } from "antd";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import ChooseWalletContext from "../../context/ChooseWalletContext";
+import ChooseCategoryContext from "../../context/ChooseCategortyContext";
+import MaSelectCategoryButton from "../global/MaSelectCategoryButton";
 import MaSelectWalletButton from "../global/MaSelectWalletButton";
 
 //todo
@@ -10,10 +11,11 @@ import MaSelectWalletButton from "../global/MaSelectWalletButton";
 //___ SelectWalletButton data={walletData}
 //___ NominalForm
 //___ ...
-//___ SelectCategoryButton
+//___ SelectCategoryButton data={categoryData}
 //___ ...
 export default function AddTransactionForm() {
   const { selectedWalletData } = useContext(ChooseWalletContext);
+  const { selectedCategory } = useContext(ChooseCategoryContext);
 
   return (
     <Row style={{ marginTop: "16px" }}>
@@ -54,7 +56,7 @@ export default function AddTransactionForm() {
             label="Category"
             rules={[{ required: true, message: "hey" }]}
           >
-            SelectCategoryButton
+            <MaSelectCategoryButton data={selectedCategory} />
           </Form.Item>
           <Form.Item name="note" label="Note (Optional)">
             <Input.TextArea
