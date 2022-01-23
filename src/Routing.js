@@ -1,6 +1,7 @@
 import { Skeleton, Spin } from "antd";
 import React, { lazy, Suspense, useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import CheckAuth from "./components/auth/CheckAuth";
 import GlobalContext from "./context/GlobalContext";
 import "./Routing.css";
 
@@ -25,6 +26,7 @@ export default function Routing() {
   return (
     <Suspense fallback={<Skeleton />}>
       <Router>
+        <CheckAuth />
         <Spin spinning={isFetching}>
           <div style={{ height: "100vh" }}>
             <div className="app mp-routing">
