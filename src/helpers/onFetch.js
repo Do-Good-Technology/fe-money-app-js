@@ -1,6 +1,7 @@
 import { message } from "antd";
 import axios from "axios";
 import qs from "qs";
+import { useContext } from "react";
 
 export const onFetch = async (keyValue, link, fetch) => {
   const UrlApi = "http://localhost:8080/";
@@ -26,6 +27,7 @@ export const onFetch = async (keyValue, link, fetch) => {
       content: "check your internet",
       duration: 2
     });
+
     return error;
   } finally {
     fetch.setIsFetching(false);
