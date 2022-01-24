@@ -21,5 +21,5 @@ export default function CheckAuth({ children }) {
     }
   }, [pathname]);
 
-  return <Fragment>{children}</Fragment>;
+  // return <Fragment>{children}</Fragment>;
 }

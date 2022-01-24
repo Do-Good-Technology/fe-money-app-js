@@ -4,6 +4,7 @@ import ChooseWalletContext from "../../context/ChooseWalletContext";
 import ChooseCategoryContext from "../../context/ChooseCategortyContext";
 import MaSelectCategoryButton from "../global/MaSelectCategoryButton";
 import MaSelectWalletButton from "../global/MaSelectWalletButton";
+import FormContext from "../../context/FormContext";
 
 //todo
 //_ MaNavBar
@@ -14,13 +15,18 @@ import MaSelectWalletButton from "../global/MaSelectWalletButton";
 //___ SelectCategoryButton data={categoryData}
 //___ ...
 export default function AddTransactionForm() {
+  const { addTransactionForm } = useContext(FormContext);
   const { selectedWalletData } = useContext(ChooseWalletContext);
   const { selectedCategory } = useContext(ChooseCategoryContext);
+
+  const onFinish = (value) => {
+    console.log("value", value);
+  };
 
   return (
     <Row style={{ marginTop: "16px" }}>
       <Col offset={1} span={22}>
-        <Form>
+        <Form form={addTransactionForm} onFinish={onFinish}>
           <Form.Item name="wallet" label="Wallet">
             <MaSelectWalletButton data={selectedWalletData} />
           </Form.Item>
@@ -51,11 +57,7 @@ export default function AddTransactionForm() {
           >
             <DatePicker />
           </Form.Item>
-          <Form.Item
-            name="category"
-            label="Category"
-            rules={[{ required: true, message: "hey" }]}
-          >
+          <Form.Item name="category" label="Category">
             <MaSelectCategoryButton data={selectedCategory} />
           </Form.Item>
           <Form.Item name="note" label="Note (Optional)">
