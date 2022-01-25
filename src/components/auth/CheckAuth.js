@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function CheckAuth({ children }) {
+export default function CheckAuth() {
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
@@ -21,5 +21,5 @@ export default function CheckAuth({ children }) {
     }
   }, [pathname]);
 
-  // return <Fragment>{children}</Fragment>;
+  return <Fragment />;
 }
