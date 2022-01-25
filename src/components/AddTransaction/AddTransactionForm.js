@@ -21,6 +21,10 @@ export default function AddTransactionForm() {
 
   const onFinish = (value) => {
     console.log("value", value);
+    console.log("selectedWalletData", selectedWalletData);
+    console.log("selectedCategory", selectedCategory);
+
+    const keyValue = {};
   };
 
   return (
