@@ -1,10 +1,10 @@
 import { message } from "antd";
 import axios from "axios";
 import qs from "qs";
-import { useContext } from "react";
+import { API_CI } from "./constants";
 
 export const onFetch = async (keyValue, link, fetch) => {
-  const UrlApi = "http://localhost:8080/";
+  const UrlApi = API_CI;
 
   fetch.setIsFetching(true);
 
