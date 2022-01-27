@@ -9,7 +9,9 @@ const { Text } = Typography;
 
 const CatergoryItem = ({ data, clickable = false, chooseTo = "" }) => {
   const navigate = useNavigate();
-  const { setSelectedCategory } = useContext(ChooseCategortyContext);
+  const { selectedCategory, setSelectedCategory } = useContext(
+    ChooseCategortyContext
+  );
 
   const onClick = () => {
     if (clickable) {
@@ -22,8 +24,16 @@ const CatergoryItem = ({ data, clickable = false, chooseTo = "" }) => {
     }
   };
 
+  const selectedBackgroud = {
+    backgroundColor: "var(--neutral-40)"
+  };
+
   return (
-    <Card onClick={onClick} bodyStyle={{ padding: "8px 8px" }}>
+    <Card
+      onClick={onClick}
+      bodyStyle={{ padding: "8px 8px" }}
+      style={selectedCategory?.id === data.id ? selectedBackgroud : {}}
+    >
       <Row align="middle">
         <Col span={4} offset={1}>
           <Image alt="" width="40px" src={data.icon} preview={false} />
