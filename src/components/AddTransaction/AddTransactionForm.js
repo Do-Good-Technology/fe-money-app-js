@@ -1,4 +1,5 @@
 import { Button, Col, DatePicker, Form, Input, InputNumber, Row } from "antd";
+import moment from "moment";
 import { useContext } from "react";
 import ChooseWalletContext from "../../context/ChooseWalletContext";
 import ChooseCategoryContext from "../../context/ChooseCategortyContext";
@@ -24,7 +25,16 @@ export default function AddTransactionForm() {
     console.log("selectedWalletData", selectedWalletData);
     console.log("selectedCategory", selectedCategory);
 
-    const keyValue = {};
+    const keyValue = {
+      idWallet: selectedWalletData?.idWallet,
+      nominalTransaction: value?.nominal,
+      flowTransaction: selectedCategory?.type,
+      categoryTransaction: selectedCategory?.id,
+      noteTransaction: value?.note,
+      dateTransaction: moment(value?.date).format("YYYY-MM-DD"),
+      isReport: 1
+    };
+    console.log("keyValue", keyValue);
   };
 
   return (

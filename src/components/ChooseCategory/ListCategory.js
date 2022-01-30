@@ -1,13 +1,23 @@
 import { Card, Col, Image, Row, Typography } from "antd";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { CapsuleTabs } from "antd-mobile";
 import ChooseCategortyContext from "../../context/ChooseCategortyContext";
 
-import { catergoryData } from "../../helpers/utilitiesCategoryIcon";
+import {
+  expenseCatergoryData,
+  incomeCategoryData
+} from "../../helpers/utilitiesCategoryIcon";
 
 const { Text } = Typography;
 
-const CatergoryItem = ({ data, clickable = false, chooseTo = "" }) => {
+const CatergoryItem = ({
+  type = "",
+  data,
+  clickable = false,
+  chooseTo = ""
+}) => {
   const navigate = useNavigate();
   const { selectedCategory, setSelectedCategory } = useContext(
     ChooseCategortyContext
@@ -18,7 +28,8 @@ const CatergoryItem = ({ data, clickable = false, chooseTo = "" }) => {
       setSelectedCategory({
         id: data.id,
         name: data.name,
-        icon: data.icon
+        icon: data.icon,
+        type: type
       });
       navigate(chooseTo);
     }
@@ -47,11 +58,36 @@ const CatergoryItem = ({ data, clickable = false, chooseTo = "" }) => {
 };
 
 export default function ListCategory({ clickable, chooseTo }) {
-  const listCategory = catergoryData.map((item) => (
+  const listExpenseCategory = expenseCatergoryData.map((item) => (
     <Col span={24}>
-      <CatergoryItem data={item} clickable={clickable} chooseTo={chooseTo} />
+      <CatergoryItem
+        type="expense"
+        data={item}
+        clickable={clickable}
+        chooseTo={chooseTo}
+      />
     </Col>
   ));
 
-  return <Row gutter={[0, 8]}>{listCategory}</Row>;
+  const listIncomeCategory = incomeCategoryData.map((item) => (
+    <Col span={24}>
+      <CatergoryItem
+        type="income"
+        data={item}
+        clickable={clickable}
+        chooseTo={chooseTo}
+      />
+    </Col>
+  ));
+
+  return (
+    <CapsuleTabs>
+      <CapsuleTabs.Tab title="Expense" key="expense">
+        {listExpenseCategory}
+      </CapsuleTabs.Tab>
+      <CapsuleTabs.Tab title="Income" key="income">
+        {listIncomeCategory}
+      </CapsuleTabs.Tab>
+    </CapsuleTabs>
+  );
 }

@@ -7,7 +7,7 @@ export default function ChooseCategory() {
   return (
     <Fragment>
       <MaNavBar title="Choose Category" goBackTo="/add-transaction" />
-      <Row style={{ paddingTop: "18px" }}>
+      <Row>
         <Col span={22} offset={1}>
           <ListCategory clickable chooseTo="/add-transaction" />
         </Col>

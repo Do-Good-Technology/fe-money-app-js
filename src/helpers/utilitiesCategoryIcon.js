@@ -9,7 +9,7 @@ import Entertainment from "../assets/icons/category/entertainment.svg";
 import MiscellaneousExpenses from "../assets/icons/category/miscellaneousExpenses.svg";
 import Others from "../assets/icons/category/others.svg";
 
-export const catergoryData = [
+export const expenseCatergoryData = [
   {
     id: "food",
     name: "Food",
@@ -58,6 +58,39 @@ export const catergoryData = [
   {
     id: "others",
     name: "Others",
+    icon: Others
+  }
+];
+
+export const incomeCategoryData = [
+  {
+    id: "award",
+    name: "Award",
+    icon: Others
+  },
+  {
+    id: "interestMoney",
+    name: "Interest Money",
+    icon: Others
+  },
+  {
+    id: "salary",
+    name: "salary",
+    icon: Others
+  },
+  {
+    id: "gifts",
+    name: "Gifts",
+    icon: Others
+  },
+  {
+    id: "selling",
+    name: "Selling",
+    icon: Others
+  },
+  {
+    id: "otherIncome",
+    name: "Other Income",
     icon: Others
   }
 ];

@@ -9,6 +9,7 @@ import ChooseWalletContext from "../../../context/ChooseWalletContext";
 const { Text } = Typography;
 
 const ItemWallet = ({
+  id = 0,
   name = "",
   nominal = "",
   icon = "",
@@ -21,6 +22,7 @@ const ItemWallet = ({
   const onClick = () => {
     if (clickable) {
       setSelectedWalletData({
+        idWallet: id,
         nameWallet: name,
         iconWallet: icon,
         nominalWallet: nominal
@@ -51,6 +53,7 @@ export default function ListWallet({ clickable, chooseTo }) {
   const groupWallet = walletListData.map((item) => (
     <Col span={24}>
       <ItemWallet
+        id={item?.id_wallet}
         name={item?.name_wallet}
         nominal={item?.nominal_wallet}
         icon={item?.icon_wallet}
