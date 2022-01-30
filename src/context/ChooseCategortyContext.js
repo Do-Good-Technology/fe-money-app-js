@@ -4,7 +4,8 @@ export const initialState = {
   selectedCategory: {
     id: "",
     name: "",
-    icon: null
+    icon: null,
+    type: "",
   },
   setSelectedCategory: null
 };
