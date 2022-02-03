@@ -17,7 +17,8 @@ const ItemWallet = ({
   chooseTo = ""
 }) => {
   const navigate = useNavigate();
-  const { setSelectedWalletData } = useContext(ChooseWalletContext);
+  const { selectedWalletData, setSelectedWalletData } =
+    useContext(ChooseWalletContext);
 
   const onClick = () => {
     if (clickable) {
@@ -31,8 +32,16 @@ const ItemWallet = ({
     }
   };
 
+  const selectedBackgroud = {
+    backgroundColor: "var(--neutral-40)"
+  };
+
   return (
-    <Card onClick={onClick} bodyStyle={{ padding: "8px 8px" }}>
+    <Card
+      onClick={onClick}
+      bodyStyle={{ padding: "8px 8px" }}
+      style={selectedWalletData?.idWallet === id ? selectedBackgroud : {}}
+    >
       <Row>
         <Col span={4} offset={1}>
           <Image alt="" width="40px" src={wallet(icon)} preview={false} />

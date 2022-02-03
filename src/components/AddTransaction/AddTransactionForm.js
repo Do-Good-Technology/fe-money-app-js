@@ -6,6 +6,8 @@ import ChooseCategoryContext from "../../context/ChooseCategortyContext";
 import MaSelectCategoryButton from "../global/MaSelectCategoryButton";
 import MaSelectWalletButton from "../global/MaSelectWalletButton";
 import FormContext from "../../context/FormContext";
+import { maOnFetch } from "../../helpers/maOnFetch";
+import GlobalContext from "../../context/GlobalContext";
 
 //todo
 //_ MaNavBar
@@ -19,6 +21,8 @@ export default function AddTransactionForm() {
   const { addTransactionForm } = useContext(FormContext);
   const { selectedWalletData } = useContext(ChooseWalletContext);
   const { selectedCategory } = useContext(ChooseCategoryContext);
+  const { isFetching, setIsFetching } = useContext(GlobalContext);
+  const fetch = { isFetching, setIsFetching };
 
   const onFinish = (value) => {
     console.log("value", value);
@@ -35,6 +39,8 @@ export default function AddTransactionForm() {
       isReport: 1
     };
     console.log("keyValue", keyValue);
+
+    maOnFetch(keyValue, "transaction/add-transaction", fetch);
   };
 
   return (

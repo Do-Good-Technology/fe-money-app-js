@@ -58,6 +58,8 @@ const CatergoryItem = ({
 };
 
 export default function ListCategory({ clickable, chooseTo }) {
+  const { selectedCategory } = useContext(ChooseCategortyContext);
+
   const listExpenseCategory = expenseCatergoryData.map((item) => (
     <Col span={24}>
       <CatergoryItem
@@ -81,7 +83,7 @@ export default function ListCategory({ clickable, chooseTo }) {
   ));
 
   return (
-    <CapsuleTabs>
+    <CapsuleTabs defaultActiveKey={selectedCategory?.type || "expense"}>
       <CapsuleTabs.Tab title="Expense" key="expense">
         {listExpenseCategory}
       </CapsuleTabs.Tab>
