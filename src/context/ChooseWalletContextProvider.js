@@ -6,11 +6,16 @@ export default function ChooseWalletContextProvider({ children }) {
     initialState.selectedWalletData
   );
 
+  const resetSelectedWalletData = () => {
+    setSelectedWalletData(initialState.selectedWalletData);
+  };
+
   return (
     <ChooseWalletContext.Provider
       value={{
         selectedWalletData,
-        setSelectedWalletData
+        setSelectedWalletData,
+        resetSelectedWalletData
       }}
     >
       {children}

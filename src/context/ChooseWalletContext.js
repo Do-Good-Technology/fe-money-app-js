@@ -7,7 +7,8 @@ export const initialState = {
     iconWallet: "",
     nominalWallet: 0
   },
-  setSelectedWalletData: null
+  setSelectedWalletData: null,
+  resetSelectedWalletData: null,
 };
 
 const ChooseWalletContext = createContext(initialState);

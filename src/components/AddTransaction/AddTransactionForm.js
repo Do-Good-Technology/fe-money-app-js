@@ -1,4 +1,13 @@
-import { Button, Col, DatePicker, Form, Input, InputNumber, Row } from "antd";
+import {
+  Button,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  message,
+  Row
+} from "antd";
 import moment from "moment";
 import { useContext } from "react";
 import ChooseWalletContext from "../../context/ChooseWalletContext";
@@ -8,6 +17,7 @@ import MaSelectWalletButton from "../global/MaSelectWalletButton";
 import FormContext from "../../context/FormContext";
 import { maOnFetch } from "../../helpers/maOnFetch";
 import GlobalContext from "../../context/GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 //todo
 //_ MaNavBar
@@ -18,13 +28,15 @@ import GlobalContext from "../../context/GlobalContext";
 //___ SelectCategoryButton data={categoryData}
 //___ ...
 export default function AddTransactionForm() {
+  const navigate = useNavigate();
+
   const { addTransactionForm } = useContext(FormContext);
-  const { selectedWalletData } = useContext(ChooseWalletContext);
-  const { selectedCategory } = useContext(ChooseCategoryContext);
+  const { selectedWalletData, resetSelectedWalletData } = useContext(ChooseWalletContext);
+  const { selectedCategory, resetSelectedCategory } = useContext(ChooseCategoryContext);
   const { isFetching, setIsFetching } = useContext(GlobalContext);
   const fetch = { isFetching, setIsFetching };
 
-  const onFinish = (value) => {
+  const onFinish = async (value) => {
     console.log("value", value);
     console.log("selectedWalletData", selectedWalletData);
     console.log("selectedCategory", selectedCategory);
@@ -40,7 +52,28 @@ export default function AddTransactionForm() {
     };
     console.log("keyValue", keyValue);
 
-    maOnFetch(keyValue, "transaction/add-transaction", fetch);
+    const data = await maOnFetch(
+      keyValue,
+      "transaction/add-transaction",
+      fetch,
+      navigate
+    );
+
+    if (data?.status === "success") {
+      message.success({
+        content: "New Wallet Has Been Made",
+        duration: 2
+      });
+      addTransactionForm.resetFields();
+      resetSelectedWalletData();
+      resetSelectedCategory();
+      navigate("/");
+    } else {
+      message.warning({
+        content: "Failed",
+        duration: 2
+      });
+    }
   };
 
   return (
