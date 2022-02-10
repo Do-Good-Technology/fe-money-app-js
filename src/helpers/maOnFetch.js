@@ -3,10 +3,17 @@ import axios from "axios";
 import qs from "qs";
 import { API_CI } from "./constants";
 
-export const maOnFetch = async (keyValue, link, fetch) => {
+export const maOnFetch = async (keyValue, link, fetch, navigate) => {
   console.log("maOnFetch");
   const auth = localStorage.getItem("auth");
   console.log("auth", auth);
+  if (!auth) {
+    message.error({
+      content: "Auth Error, Please Re-Login",
+      duration: 2
+    });
+    navigate("/login");
+  }
 
   fetch.setIsFetching(true);
 
@@ -26,6 +33,7 @@ export const maOnFetch = async (keyValue, link, fetch) => {
         content: "Auth Error, Please Re-Login",
         duration: 2
       });
+      navigate("/login");
     }
 
     return data;
@@ -34,7 +42,6 @@ export const maOnFetch = async (keyValue, link, fetch) => {
       content: "check your internet",
       duration: 2
     });
-
     return error;
   } finally {
     fetch.setIsFetching(false);

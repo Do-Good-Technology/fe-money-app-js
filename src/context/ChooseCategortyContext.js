@@ -7,7 +7,8 @@ export const initialState = {
     icon: null,
     type: "",
   },
-  setSelectedCategory: null
+  setSelectedCategory: null,
+  resetSelectedCategory: null,
 };
 
 const ChooseCategortyContext = createContext(initialState);

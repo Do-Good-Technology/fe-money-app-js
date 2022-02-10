@@ -6,9 +6,17 @@ export default function ChooseCategortyContextProvider({ children }) {
     initialState.selectedCategory
   );
 
+  const resetSelectedCategory = () => {
+    setSelectedCategory(initialState.selectedCat);
+  };
+
   return (
     <ChooseCategortyContext.Provider
-      value={{ selectedCategory, setSelectedCategory }}
+      value={{
+        selectedCategory,
+        setSelectedCategory,
+        resetSelectedCategory
+      }}
     >
       {children}
     </ChooseCategortyContext.Provider>
