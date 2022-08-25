@@ -1,4 +1,3 @@
-
 # FE Money App Js
 
 Frontend using React Js for Money App web application. This application interact with user and get data from Backend side.
@@ -40,6 +39,26 @@ Start the server
   yarn start
 ```
 
+(Extra) Updated post:
+This project could run on Docker 🐳 for developement
+
+```
+   // build with no cache
+   docker-compose build --no-cache
+   
+   // start the services
+   docker-compose up
+   
+   // list the services
+   docker-compose ps
+
+   // list the containers
+   docker ps
+
+   // stop services
+   docker-compose stop
+```
+
   
 ## Authors
 Do Good Technology Team
@@ -47,5 +66,3 @@ Do Good Technology Team
 - [@zanma](https://github.com/Zanma)
 - [Albertus Gagas Pradana Dian Nugraha](https://www.linkedin.com/in/albertuspradana/)
 - [Nafian Hanandyawan](https://www.linkedin.com/in/nafianhanandyawan/)
-
-  
