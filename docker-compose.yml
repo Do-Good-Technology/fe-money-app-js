@@ -1,0 +1,12 @@
+version: "3"
+services:
+  money-app-ui:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    container_name: money-app-ui
+    stdin_open: true
+    volumes:
+      - .:/usr/src/app/fe-money-app-js
+      - /usr/src/app/fe-money-app-js/node_modules
